@@ -6,7 +6,7 @@ metadata:
   labels:
     app: {{ .Values.name }}
 spec:
-  replicas: {{  .Values.deploymentv1.replicas }}
+  replicas: {{  .Values.deployment.replicas }}
   selector:
     matchLabels:
       app: {{ .Values.name }}
@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: {{ .Values.name }}
-        image: {{  .Values.deploymentv1.image }}:{{ .Values.deploymentv1.tag }}
+        image: {{  .Values.deployment.image }}:{{ .Values.deployment.tag }}
         ports:
-        - containerPort: {{  .Values.deploymentv1.containerPort }}
+        - containerPort: {{  .Values.deployment.containerPort }}

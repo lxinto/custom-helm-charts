@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}-v1
+  name: {{ .Values.name }}-v2
   namespace: {{  .Values.namespace }}
   labels:
-    version: v1
+    version: v2
 spec:
-  replicas: {{  .Values.deploymentv1.replicas }}
+  replicas: {{  .Values.deploymentv2.replicas }}
   selector:
     matchLabels:
       app: {{ .Values.name }}
@@ -14,12 +14,12 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}
-        version: v1
+        version: v2
       annotations:
         sidecar.istio.io/inject: 'true'
     spec:
       containers:
       - name: {{ .Values.name }}
-        image: {{  .Values.deploymentv1.image }}:{{ .Values.deploymentv1.tag }}
+        image: {{  .Values.deploymentv2.image }}:{{ .Values.deploymentv2.tag }}
         ports:
-        - containerPort: {{  .Values.deploymentv1.containerPort }}
+        - containerPort: {{  .Values.deploymentv2.containerPort }}
