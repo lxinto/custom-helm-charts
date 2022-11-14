@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ .Values.name }}-route
-  namespaces: {{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   host: {{ .Values.host }}
   path: "/"
